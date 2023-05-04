@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "linkIt",
+  "name": "Linkt",
   "version": "1.0.0",
   "description": "Store commonly sent links in one place to save you the trouble of looking them up!",
   "action": {
