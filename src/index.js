@@ -4,11 +4,29 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  config: {
+    initialColorMode: "tangarine",
+    useSystemColorMode: false,
+  },
+  colors: {
+    tangerine: {
+      background1: "#FF8583",
+      background2: "#FFD194",
+    },
+    space: {
+      background1: "#8929AD",
+      background2: "#436AAC",
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
   </React.StrictMode>
