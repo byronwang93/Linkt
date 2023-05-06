@@ -1,0 +1,2 @@
+to generate a new icon run:
+npx @svgr/cli src/images/svgs --out-dir src/images/icons --icon
