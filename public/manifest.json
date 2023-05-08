@@ -13,9 +13,6 @@
     "default_popup": "index.html",
     "default_title": "Find your links now!"
   },
-  "permissions": [
-    "scripting"
-  ],
   "host_permissions": [
     "https://*/",
     "http://*/"
