@@ -61,7 +61,7 @@ const Logos = () => {
     <Wrap width="250px">
       {logos.map(({ logo, name, link }, index) => {
         return (
-          <Box margin="0px" boxSize="55px">
+          <Box margin="0px" boxSize="55px" key={index}>
             <Icon
               onClick={() => {
                 toast({

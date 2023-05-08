@@ -1,12 +1,15 @@
 import "./App.css";
-import { Box, Button, Text } from "@chakra-ui/react";
+import HomePage from "./components/HomePage";
+import { useEffect, useState } from "react";
+import { EditContext } from "./helper/Context";
 
 function App() {
+  const [canEdit, setCanEdit] = useState(false);
+
   return (
-    <Box className="container" p="0" m="0" w="381px" h="522px">
-      <Text>Click on a link to copy it to your clipboard! :')</Text>
-      <Button>Manage my links</Button>
-    </Box>
+    <EditContext.Provider value={{ canEdit, setCanEdit }}>
+      <HomePage />
+    </EditContext.Provider>
   );
 }
 
