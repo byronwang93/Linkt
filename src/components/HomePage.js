@@ -5,23 +5,27 @@ import { useToast } from "@chakra-ui/react";
 import { EditContext } from "../helper/Context";
 import { useContext } from "react";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 function HomePage() {
   const { canEdit, setCanEdit } = useContext(EditContext);
   const toast = useToast();
+  const ref = useRef(false);
 
   const toggleEdit = () => {
     setCanEdit(!canEdit);
   };
 
   useEffect(() => {
-    if (!canEdit) {
+    if (!canEdit && ref.current) {
       toast({
         title: "Saved!",
         status: "success",
         duration: 1000,
       });
     }
+
+    if (!ref.current) ref.current = true;
   }, [canEdit]);
   return (
     <VStack
