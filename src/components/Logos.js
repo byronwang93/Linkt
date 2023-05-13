@@ -1,5 +1,6 @@
 import { Box, Flex, Icon, useToast, Wrap } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
+import { EditContext } from "../helper/Context";
 import {
   Email,
   Facebook,
@@ -56,6 +57,7 @@ const logos = [
 
 const Logos = () => {
   const toast = useToast();
+  const { canEdit } = useContext(EditContext);
 
   return (
     <Wrap width="250px">
@@ -64,13 +66,17 @@ const Logos = () => {
           <Box margin="0px" boxSize="55px" key={index}>
             <Icon
               onClick={() => {
-                toast({
-                  title: `${name} copied!`,
-                  status: "success",
-                  duration: 1000,
-                });
+                if (canEdit) {
+                  console.log("edit mode");
+                } else {
+                  toast({
+                    title: `${name} copied!`,
+                    status: "success",
+                    duration: 1000,
+                  });
 
-                navigator.clipboard.writeText(link);
+                  navigator.clipboard.writeText(link);
+                }
               }}
               _hover={{ cursor: "pointer", boxSize: "54px" }}
               boxSize="50px"
