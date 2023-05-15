@@ -30,6 +30,10 @@ import {
   PersonalWebsite,
   Twitter,
   Youtube,
+  OneIcon,
+  TwoIcon,
+  ThreeIcon,
+  FourIcon,
 } from "../images/icons";
 
 const logos = [
@@ -65,6 +69,22 @@ const logos = [
     logo: Youtube,
     name: "Youtube",
   },
+  {
+    logo: OneIcon,
+    name: "Personal link 1",
+  },
+  {
+    logo: TwoIcon,
+    name: "Personal link 2",
+  },
+  {
+    logo: ThreeIcon,
+    name: "Personal link 3",
+  },
+  {
+    logo: FourIcon,
+    name: "Personal link 4",
+  },
 ];
 
 const EditLogos = () => {
@@ -81,6 +101,10 @@ const EditLogos = () => {
     localStorage.setItem("linktPersonalWebsite", "");
     localStorage.setItem("linktTwitter", "");
     localStorage.setItem("linktYoutube", "");
+    localStorage.setItem("linktLink1", "");
+    localStorage.setItem("linktLink2", "");
+    localStorage.setItem("linktLink3", "");
+    localStorage.setItem("linktLink4", "");
 
     onClose();
     setCanEdit(!canEdit);
@@ -100,6 +124,10 @@ const EditLogos = () => {
     localStorage.setItem("linktPersonalWebsite", messagePersonalWebsite);
     localStorage.setItem("linktTwitter", messageTwitter);
     localStorage.setItem("linktYoutube", messageYoutube);
+    localStorage.setItem("linktLink1", messageLink1);
+    localStorage.setItem("linktLink2", messageLink2);
+    localStorage.setItem("linktLink3", messageLink3);
+    localStorage.setItem("linktLink4", messageLink4);
     setCanEdit(!canEdit);
 
     toast({
@@ -149,6 +177,26 @@ const EditLogos = () => {
       ? ""
       : localStorage.getItem("linktYoutube")
   );
+  const [messageLink1, setMessageLink1] = useState(
+    localStorage.getItem("linktLink1") === null
+      ? ""
+      : localStorage.getItem("linktLink1")
+  );
+  const [messageLink2, setMessageLink2] = useState(
+    localStorage.getItem("linktLink2") === null
+      ? ""
+      : localStorage.getItem("linktLink2")
+  );
+  const [messageLink3, setMessageLink3] = useState(
+    localStorage.getItem("linktLink3") === null
+      ? ""
+      : localStorage.getItem("linktLink3")
+  );
+  const [messageLink4, setMessageLink4] = useState(
+    localStorage.getItem("linktLink4") === null
+      ? ""
+      : localStorage.getItem("linktLink4")
+  );
 
   return (
     <Box>
@@ -175,6 +223,14 @@ const EditLogos = () => {
                     ? messagePersonalWebsite
                     : name === "Twitter"
                     ? messageTwitter
+                    : name === "Personal link 1"
+                    ? messageLink1
+                    : name === "Personal link 2"
+                    ? messageLink2
+                    : name === "Personal link 3"
+                    ? messageLink3
+                    : name === "Personal link 4"
+                    ? messageLink4
                     : messageYoutube
                 }
                 onChange={(event) => {
@@ -194,6 +250,14 @@ const EditLogos = () => {
                     setMessageTwitter(event.target.value);
                   } else if (name === "Youtube") {
                     setMessageYoutube(event.target.value);
+                  } else if (name === "Personal link 1") {
+                    setMessageLink1(event.target.value);
+                  } else if (name === "Personal link 2") {
+                    setMessageLink2(event.target.value);
+                  } else if (name === "Personal link 3") {
+                    setMessageLink3(event.target.value);
+                  } else if (name === "Personal link 4") {
+                    setMessageLink4(event.target.value);
                   }
                 }}
                 placeholder={name}
@@ -202,7 +266,7 @@ const EditLogos = () => {
           );
         })}
       </VStack>
-      <HStack spacing="26px" pt="25px">
+      <HStack spacing="26px" pt="25px" top="7px" position="relative">
         <Button
           className="button"
           bg="#FF7D60"

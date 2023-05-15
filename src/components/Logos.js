@@ -1,4 +1,4 @@
-import { Box, Icon, Text, useToast, Wrap } from "@chakra-ui/react";
+import { Box, HStack, Icon, Img, Text, useToast, Wrap } from "@chakra-ui/react";
 import React from "react";
 import {
   Email,
@@ -9,6 +9,10 @@ import {
   PersonalWebsite,
   Twitter,
   Youtube,
+  OneIcon,
+  TwoIcon,
+  ThreeIcon,
+  FourIcon,
 } from "../images/icons";
 
 const linktKeys = [
@@ -52,6 +56,26 @@ const linktKeys = [
     name: "YouTube",
     link: "linktYoutube",
   },
+  {
+    logo: OneIcon,
+    name: "Personal link 1",
+    link: "linktLink1",
+  },
+  {
+    logo: TwoIcon,
+    name: "Personal link 2",
+    link: "linktLink2",
+  },
+  {
+    logo: ThreeIcon,
+    name: "Personal link 3",
+    link: "linktLink3",
+  },
+  {
+    logo: FourIcon,
+    name: "Personal link 4",
+    link: "linktLink4",
+  },
 ];
 
 const Logos = () => {
@@ -61,18 +85,20 @@ const Logos = () => {
   for (let i = 0; i < linktKeys.length; i++) {
     const curr = linktKeys[i].link;
     const value = localStorage.getItem(curr);
-    console.log(value, " is the curr for the value of ", linktKeys[i]);
     if (value !== null && value !== "") {
       keysWithValues.push(linktKeys[i]);
     }
   }
 
-  console.log(keysWithValues, " is the array");
-
   return (
     <Wrap width="250px">
       {keysWithValues.length === 0 ? (
-        <Text>No links saved yet, manage your links to get started!</Text>
+        <HStack>
+          <Text textAlign="start" fontWeight="bold">
+            No links saved yet, manage your links to get started!
+          </Text>
+          <Img boxSize="110px" src={`/images/no_links.png`} alt="Linkt logo" />
+        </HStack>
       ) : (
         keysWithValues.map(({ name, link, logo }, index) => {
           const savedLink = localStorage.getItem(link);
