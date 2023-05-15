@@ -1,16 +1,23 @@
 import { Button, HStack, Img, Text, VStack } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import Logos from "./Logos";
-import { EditContext } from "../helper/Context";
+import { EditContext, ColourContext } from "../helper/Context";
 import { useContext } from "react";
 import EditLogos from "./EditLogos";
 
 function HomePage() {
   const { canEdit, setCanEdit } = useContext(EditContext);
+  const { colourMode, setColourMode } = useContext(ColourContext);
 
   const toggleEdit = () => {
     setCanEdit(!canEdit);
   };
+
+  useEffect(() => {
+    const storedColour = localStorage.getItem("colourMode");
+    setColourMode(storedColour);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <VStack
@@ -21,6 +28,15 @@ function HomePage() {
       w={canEdit ? "400px" : "300px"}
       h="100%"
       spacing="20px"
+      backgroundImage={
+        colourMode === "Tangerine"
+          ? "linear-gradient(to bottom right, #FF8583, #FFD194)"
+          : colourMode === "Space"
+          ? "linear-gradient(to bottom right, #3C2446, #5B7BBB)"
+          : colourMode === "Matcha"
+          ? "linear-gradient(to bottom right, #D4EFC1, #739C59)"
+          : "linear-gradient(to bottom right, #CAEFFB, #3394D8)"
+      }
     >
       <HStack
         w="100%"
@@ -46,8 +62,24 @@ function HomePage() {
         {!canEdit && (
           <Button
             className="button"
-            bg="#FF7D60"
-            _hover={{ bg: "#FF5A34" }}
+            bg={
+              colourMode === "Tangerine"
+                ? "#FF7D60"
+                : colourMode === "Space"
+                ? "#4D2B5B"
+                : colourMode === "Matcha"
+                ? "#709558"
+                : "#3792D1"
+            }
+            _hover={
+              colourMode === "Tangerine"
+                ? { bg: "#FF5A34" }
+                : colourMode === "Space"
+                ? { bg: "#33183F" }
+                : colourMode === "Matcha"
+                ? { bg: "#2E3E24" }
+                : { bg: "#1F5881" }
+            }
             onClick={toggleEdit}
           >
             Manage my links

@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { useState } from "react";
-import { EditContext } from "../helper/Context";
+import { EditContext, ColourContext } from "../helper/Context";
 import {
   Email,
   Facebook,
@@ -35,6 +35,7 @@ import {
   ThreeIcon,
   FourIcon,
 } from "../images/icons";
+import ColourSchemes from "./ColourSchemes";
 
 const logos = [
   {
@@ -89,6 +90,7 @@ const logos = [
 
 const EditLogos = () => {
   const { canEdit, setCanEdit } = useContext(EditContext);
+  const { colourMode } = useContext(ColourContext);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -266,11 +268,28 @@ const EditLogos = () => {
           );
         })}
       </VStack>
+      <ColourSchemes />
       <HStack spacing="26px" pt="25px" top="7px" position="relative">
         <Button
           className="button"
-          bg="#FF7D60"
-          _hover={{ bg: "#FF5A34" }}
+          bg={
+            colourMode === "Tangerine"
+              ? "#FF7D60"
+              : colourMode === "Space"
+              ? "#4D2B5B"
+              : colourMode === "Matcha"
+              ? "#709558"
+              : "#3792D1"
+          }
+          _hover={
+            colourMode === "Tangerine"
+              ? { bg: "#FF5A34" }
+              : colourMode === "Space"
+              ? { bg: "#33183F" }
+              : colourMode === "Matcha"
+              ? { bg: "#2E3E24" }
+              : { bg: "#1F5881" }
+          }
           onClick={saveValues}
           ml="21%"
         >
@@ -278,8 +297,24 @@ const EditLogos = () => {
         </Button>
         <Button
           className="button"
-          bg="#FF7D60"
-          _hover={{ bg: "#FF5A34" }}
+          bg={
+            colourMode === "Tangerine"
+              ? "#FF7D60"
+              : colourMode === "Space"
+              ? "#4D2B5B"
+              : colourMode === "Matcha"
+              ? "#709558"
+              : "#3792D1"
+          }
+          _hover={
+            colourMode === "Tangerine"
+              ? { bg: "#FF5A34" }
+              : colourMode === "Space"
+              ? { bg: "#33183F" }
+              : colourMode === "Matcha"
+              ? { bg: "#2E3E24" }
+              : { bg: "#1F5881" }
+          }
           onClick={onOpen}
         >
           Reset
@@ -301,8 +336,24 @@ const EditLogos = () => {
           <ModalFooter>
             <Button
               className="button"
-              bg="#FF7D60"
-              _hover={{ bg: "#FF5A34" }}
+              bg={
+                colourMode === "Tangerine"
+                  ? "#FF7D60"
+                  : colourMode === "Space"
+                  ? "#4D2B5B"
+                  : colourMode === "Matcha"
+                  ? "#709558"
+                  : "#3792D1"
+              }
+              _hover={
+                colourMode === "Tangerine"
+                  ? { bg: "#FF5A34" }
+                  : colourMode === "Space"
+                  ? { bg: "#33183F" }
+                  : colourMode === "Matcha"
+                  ? { bg: "#2E3E24" }
+                  : { bg: "#1F5881" }
+              }
               onClick={resetStorage}
             >
               Reset links
@@ -310,8 +361,24 @@ const EditLogos = () => {
             <Button
               ml="20px"
               className="button"
-              bg="#FF7D60"
-              _hover={{ bg: "#FF5A34" }}
+              bg={
+                colourMode === "Tangerine"
+                  ? "#FF7D60"
+                  : colourMode === "Space"
+                  ? "#4D2B5B"
+                  : colourMode === "Matcha"
+                  ? "#709558"
+                  : "#3792D1"
+              }
+              _hover={
+                colourMode === "Tangerine"
+                  ? { bg: "#FF5A34" }
+                  : colourMode === "Space"
+                  ? { bg: "#33183F" }
+                  : colourMode === "Matcha"
+                  ? { bg: "#2E3E24" }
+                  : { bg: "#1F5881" }
+              }
               onClick={onClose}
             >
               Cancel
