@@ -1,6 +1,5 @@
-import { Box, Flex, Icon, useToast, Wrap } from "@chakra-ui/react";
-import React, { useContext } from "react";
-import { EditContext } from "../helper/Context";
+import { Box, Icon, Text, useToast, Wrap } from "@chakra-ui/react";
+import React from "react";
 import {
   Email,
   Facebook,
@@ -12,81 +11,93 @@ import {
   Youtube,
 } from "../images/icons";
 
-const logos = [
+const linktKeys = [
   {
     logo: Email,
     name: "Email",
-    link: "byronwang93@gmail.com",
+    link: "linktEmail",
   },
   {
     logo: Facebook,
     name: "Facebook",
-    link: "https://www.facebook.com/byron.wang.319/",
+    link: "linktFacebook",
   },
   {
     logo: Github,
     name: "GitHub",
-    link: "https://github.com/byronwang93",
+    link: "linktGithub",
   },
   {
     logo: Instagram,
     name: "Instagram",
-    link: "https://www.instagram.com/byronwang93/",
+    link: "linktInstagram",
   },
   {
     logo: Linkedin,
     name: "Linkedin",
-    link: "https://www.linkedin.com/in/byronwang93/",
+    link: "linktLinkedin",
   },
   {
     logo: PersonalWebsite,
     name: "Personal site",
-    link: "https://www.byronwang.com/",
+    link: "linktPersonalWebsite",
   },
   {
     logo: Twitter,
     name: "Twitter",
-    link: "https://twitter.com/MegaBub_Byron",
+    link: "linktTwitter",
   },
   {
     logo: Youtube,
     name: "YouTube",
-    link: "https://www.youtube.com/channel/UCtNVS3vcyncIzCj_dKQdQBA",
+    link: "linktYoutube",
   },
 ];
 
 const Logos = () => {
   const toast = useToast();
-  const { canEdit } = useContext(EditContext);
+
+  const keysWithValues = [];
+  for (let i = 0; i < linktKeys.length; i++) {
+    const curr = linktKeys[i].link;
+    const value = localStorage.getItem(curr);
+    console.log(value, " is the curr for the value of ", linktKeys[i]);
+    if (value !== null && value !== "") {
+      keysWithValues.push(linktKeys[i]);
+    }
+  }
+
+  console.log(keysWithValues, " is the array");
 
   return (
     <Wrap width="250px">
-      {logos.map(({ logo, name, link }, index) => {
-        return (
-          <Box margin="0px" boxSize="55px" key={index}>
-            <Icon
-              onClick={() => {
-                if (canEdit) {
-                  console.log("edit mode");
-                } else {
+      {keysWithValues.length === 0 ? (
+        <Text>No links saved yet, manage your links to get started!</Text>
+      ) : (
+        keysWithValues.map(({ name, link, logo }, index) => {
+          const savedLink = localStorage.getItem(link);
+          return (
+            <Box margin="0px" boxSize="55px" key={index}>
+              <Icon
+                onClick={() => {
                   toast({
                     title: `${name} copied!`,
                     status: "success",
                     duration: 1000,
                   });
 
-                  navigator.clipboard.writeText(link);
-                }
-              }}
-              _hover={{ cursor: "pointer", boxSize: "54px" }}
-              boxSize="50px"
-              ml="6px"
-              mr="6px"
-              as={logo}
-            />
-          </Box>
-        );
-      })}
+                  navigator.clipboard.writeText(savedLink);
+                }}
+                _hover={{ cursor: "pointer", boxSize: "54px" }}
+                boxSize="50px"
+                ml="6px"
+                mr="6px"
+                as={logo}
+              />
+            </Box>
+          );
+        })
+      )}
     </Wrap>
   );
 };
