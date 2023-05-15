@@ -12,9 +12,5 @@
   "action": {
     "default_popup": "index.html",
     "default_title": "Find your links now!"
-  },
-  "host_permissions": [
-    "https://*/",
-    "http://*/"
-  ]
+  }
 }
