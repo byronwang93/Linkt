@@ -40,7 +40,6 @@ const ColourSchemes = () => {
               onClick={() => {
                 localStorage.setItem("colourMode", name);
                 setColourMode(name);
-                console.log(colourMode, " is the new colourMode");
               }}
               borderRadius="100%"
               boxSize="40px"
