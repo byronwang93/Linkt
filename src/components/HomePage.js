@@ -19,12 +19,12 @@ function HomePage() {
       p="20px"
       m="0"
       w={canEdit ? "400px" : "300px"}
-      h={canEdit ? "500px" : "390px"}
+      h="100%"
       spacing="20px"
     >
       <HStack
         w="100%"
-        spacing={canEdit ? "142px" : "70px"}
+        spacing={canEdit ? "142px" : "84px"}
         position="relative"
         right="17px"
       >
@@ -42,7 +42,7 @@ function HomePage() {
           : "Click on a link to copy it to your clipboard! :')"}
       </Text>
       {canEdit ? <EditLogos /> : <Logos />}
-      <HStack>
+      <HStack pb="7px">
         {!canEdit && (
           <Button
             className="button"
