@@ -34,8 +34,8 @@ function HomePage() {
           : colourMode === "Space"
           ? "linear-gradient(to bottom right, #3C2446, #5B7BBB)"
           : colourMode === "Matcha"
-          ? "linear-gradient(to bottom right, #D4EFC1, #739C59)"
-          : "linear-gradient(to bottom right, #CAEFFB, #3394D8)"
+          ? "linear-gradient(to bottom right, #739C59, #D4EFC1)"
+          : "linear-gradient(to bottom right, #3394D8, #6ADBFF)"
       }
     >
       <HStack

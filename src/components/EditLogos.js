@@ -202,7 +202,7 @@ const EditLogos = () => {
 
   return (
     <Box>
-      <VStack height="250px" width="290px" spacing="20px" overflowY="scroll">
+      <VStack height="240px" width="290px" spacing="20px" overflowY="scroll">
         {logos.map(({ logo, name }, index) => {
           return (
             <InputGroup pr="10px" key={index}>

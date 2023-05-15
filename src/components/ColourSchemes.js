@@ -18,13 +18,13 @@ const ColourSchemes = () => {
     },
     {
       name: "Matcha",
-      gradient1: "#D4EFC1",
-      gradient2: "#739C59",
+      gradient1: "#739C59",
+      gradient2: "#D4EFC1",
     },
     {
       name: "Sky",
-      gradient1: "#CAEFFB",
-      gradient2: "#3394D8",
+      gradient1: "#3394D8",
+      gradient2: "#CAEFFB",
     },
   ];
 
