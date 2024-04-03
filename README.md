@@ -7,5 +7,5 @@ Features:
 - 4 personalized links
 - Additional colour scheme
 
-You can find the extension here! :')
+You can find/install the extension here! :')
 https://chromewebstore.google.com/detail/linkt/fjhmcdeacfacahfiiimnkmccnocidjpn
